@@ -15,7 +15,7 @@ public class InitBattleState : BattleState
         Point p = new Point((int)levelData.tiles[0].x, (int)levelData.tiles[0].z);
         SelectTile(p);
         yield return null;
-        owner.ChangeState<MoveTargetState>();
+        owner.ChangeState<CutSceneState>();
     }
 
     void SpawnTestUnits()

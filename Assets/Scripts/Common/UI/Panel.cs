@@ -12,6 +12,7 @@ public class Panel : MonoBehaviour
     public Tweener Transition { get; private set; }
     public bool InTransition { get { return Transition != null; } }
 
+    [NonReorderable]
     [SerializeField] List<Position> positionList;
     Dictionary<string, Position> positionMap;
     LayoutAnchor anchor;
