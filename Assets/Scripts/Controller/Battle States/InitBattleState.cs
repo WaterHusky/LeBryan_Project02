@@ -13,6 +13,7 @@ public class InitBattleState : BattleState
     {
         board.Load(levelData);
         Point p = new Point((int)levelData.tiles[0].x, (int)levelData.tiles[0].z);
+        owner.round = owner.gameObject.AddComponent<TurnOrderController>().Round();
         SelectTile(p);
         SpawnTestUnits();
         yield return null;

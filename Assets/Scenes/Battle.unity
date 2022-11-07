@@ -168,17 +168,6 @@ Transform:
   m_Father: {fileID: 1333983972}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &620525166 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2336292963367241693, guid: 54f8ef4eca4fe44488e26f231fa5dd6d, type: 3}
-  m_PrefabInstance: {fileID: 2336292962755129779}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &667038210
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,17 +309,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &745604896 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2336292963223778963, guid: 54f8ef4eca4fe44488e26f231fa5dd6d, type: 3}
-  m_PrefabInstance: {fileID: 2336292962755129779}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &911497940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2336292963658230631, guid: 54f8ef4eca4fe44488e26f231fa5dd6d, type: 3}
@@ -536,6 +514,7 @@ MonoBehaviour:
     x: 0
     y: 0
   abilityMenuPanelController: {fileID: 911497941}
+  statPanelController: {fileID: 2023680296}
   units: []
 --- !u!4 &1333983972
 Transform:
@@ -554,6 +533,7 @@ Transform:
   - {fileID: 126982344}
   - {fileID: 1948500880}
   - {fileID: 911497940}
+  - {fileID: 2023680295}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -705,6 +685,79 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7004986562626648325, guid: 6a7a47dd26264094ea7f452a3ce5ddea, type: 3}
   m_PrefabInstance: {fileID: 7004986563496852117}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2023680294
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1333983972}
+    m_Modifications:
+    - target: {fileID: 155606, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+      propertyPath: m_Name
+      value: Stat Panel Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 458680, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 458680, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458680, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458680, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458680, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 458680, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458680, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458680, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458680, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458680, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458680, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+--- !u!4 &2023680295 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 458680, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+  m_PrefabInstance: {fileID: 2023680294}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2023680296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 11431108, guid: 24138ad8c11203249bc663e2bafa88da, type: 3}
+  m_PrefabInstance: {fileID: 2023680294}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d52d19a4c4b4a9647a6300ab0d978e7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2336292962755129779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -731,11 +784,11 @@ PrefabInstance:
     - target: {fileID: 2336292961618501771, guid: 54f8ef4eca4fe44488e26f231fa5dd6d, type: 3}
       propertyPath: label
       value: 
-      objectReference: {fileID: 620525166}
+      objectReference: {fileID: 0}
     - target: {fileID: 2336292961618501771, guid: 54f8ef4eca4fe44488e26f231fa5dd6d, type: 3}
       propertyPath: bullet
       value: 
-      objectReference: {fileID: 745604896}
+      objectReference: {fileID: 0}
     - target: {fileID: 2336292961898161598, guid: 54f8ef4eca4fe44488e26f231fa5dd6d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -807,6 +860,10 @@ PrefabInstance:
     - target: {fileID: 2336292963658230624, guid: 54f8ef4eca4fe44488e26f231fa5dd6d, type: 3}
       propertyPath: m_Name
       value: Ability Menu Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336292963658230624, guid: 54f8ef4eca4fe44488e26f231fa5dd6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2336292963658230631, guid: 54f8ef4eca4fe44488e26f231fa5dd6d, type: 3}
       propertyPath: m_RootOrder
