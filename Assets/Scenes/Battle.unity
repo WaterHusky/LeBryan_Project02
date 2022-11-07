@@ -336,6 +336,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2336292963658230631, guid: 54f8ef4eca4fe44488e26f231fa5dd6d, type: 3}
   m_PrefabInstance: {fileID: 2336292962755129779}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &911497941 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2336292963658230630, guid: 54f8ef4eca4fe44488e26f231fa5dd6d, type: 3}
+  m_PrefabInstance: {fileID: 2336292962755129779}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef726f28401a2534c986f6b722b8060d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdfa8ce9063266458775068c7e13f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heroPrefab: {fileID: 100004, guid: 5146d0c49fda2462ebf1e183f00470f2, type: 3}
   cameraRig: {fileID: 667038212}
   board: {fileID: 126982343}
   levelData: {fileID: 11400000, guid: 708bf896aeb4714419c7fe0afc811bba, type: 2}
@@ -523,9 +535,7 @@ MonoBehaviour:
   pos:
     x: 0
     y: 0
-  heroPrefab: {fileID: 100004, guid: 5146d0c49fda2462ebf1e183f00470f2, type: 3}
-  currentUnit: {fileID: 0}
-  abilityMenuPanelController: {fileID: 0}
+  abilityMenuPanelController: {fileID: 911497941}
   units: []
 --- !u!4 &1333983972
 Transform:
