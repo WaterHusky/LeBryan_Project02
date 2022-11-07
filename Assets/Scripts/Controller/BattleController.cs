@@ -11,6 +11,10 @@ public class BattleController : StateMachine
     public Point pos;
     public GameObject heroPrefab;
     public Unit currentUnit;
+
+    public AbilityMenuPanelController abilityMenuPanelController;
+    public Turn turn = new Turn();
+    public List<Unit> units = new List<Unit>();
     public Tile currentTile { get { return board.GetTile(pos); } }
     void Start()
     {
