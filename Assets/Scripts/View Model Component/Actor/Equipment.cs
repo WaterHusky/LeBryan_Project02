@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 public class Equipment : MonoBehaviour
 {
@@ -10,12 +10,12 @@ public class Equipment : MonoBehaviour
 	#endregion
 
 	#region Fields / Properties
-	public IList<Equippable> items { get { return _items.AsReadOnly(); } }
+	public IList<Equippable> items { get { return _items.AsReadOnly(); }}
 	List<Equippable> _items = new List<Equippable>();
 	#endregion
 
 	#region Public
-	public void Equip(Equippable item, EquipSlots slots)
+	public void Equip (Equippable item, EquipSlots slots)
 	{
 		UnEquip(slots);
 
@@ -27,7 +27,7 @@ public class Equipment : MonoBehaviour
 		this.PostNotification(EquippedNotification, item);
 	}
 
-	public void UnEquip(Equippable item)
+	public void UnEquip (Equippable item)
 	{
 		item.OnUnEquip();
 		item.slots = EquipSlots.None;
@@ -36,23 +36,23 @@ public class Equipment : MonoBehaviour
 
 		this.PostNotification(UnEquippedNotification, item);
 	}
-
-	public void UnEquip(EquipSlots slots)
+	
+	public void UnEquip (EquipSlots slots)
 	{
 		for (int i = _items.Count - 1; i >= 0; --i)
 		{
 			Equippable item = _items[i];
-			if ((item.slots & slots) != EquipSlots.None)
+			if ( (item.slots & slots) != EquipSlots.None )
 				UnEquip(item);
 		}
 	}
 
-	public Equippable GetItem(EquipSlots slots)
+	public Equippable GetItem (EquipSlots slots)
 	{
 		for (int i = _items.Count - 1; i >= 0; --i)
 		{
 			Equippable item = _items[i];
-			if ((item.slots & slots) != EquipSlots.None)
+			if ( (item.slots & slots) != EquipSlots.None )
 				return item;
 		}
 		return null;

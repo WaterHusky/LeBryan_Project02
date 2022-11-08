@@ -1,9 +1,8 @@
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class ConversationData : ScriptableObject
+public class ConversationData : ScriptableObject 
 {
-    [NonReorderable]
-    public List<SpeakerData> list;
+	public List<SpeakerData> list;
 }

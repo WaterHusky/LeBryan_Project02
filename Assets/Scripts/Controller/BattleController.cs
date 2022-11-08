@@ -1,15 +1,15 @@
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class BattleController : StateMachine
+public class BattleController : StateMachine 
 {
 	public CameraRig cameraRig;
 	public Board board;
 	public LevelData levelData;
 	public Transform tileSelectionIndicator;
 	public Point pos;
-	public Tile currentTile { get { return board.GetTile(pos); } }
+	public Tile currentTile { get { return board.GetTile(pos); }}
 	public AbilityMenuPanelController abilityMenuPanelController;
 	public StatPanelController statPanelController;
 	public HitSuccessIndicator hitSuccessIndicator;
@@ -20,7 +20,7 @@ public class BattleController : StateMachine
 	public IEnumerator round;
 	public ComputerPlayer cpu;
 
-	void Start()
+	void Start ()
 	{
 		ChangeState<InitBattleState>();
 	}

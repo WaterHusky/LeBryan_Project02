@@ -1,33 +1,33 @@
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class AbilityTargetState : BattleState
+public class AbilityTargetState : BattleState 
 {
 	List<Tile> tiles;
 	AbilityRange ar;
-
-	public override void Enter()
+	
+	public override void Enter ()
 	{
-		base.Enter();
+		base.Enter ();
 		ar = turn.ability.GetComponent<AbilityRange>();
-		SelectTiles();
+		SelectTiles ();
 		statPanelController.ShowPrimary(turn.actor.gameObject);
 		if (ar.directionOriented)
 			RefreshSecondaryStatPanel(pos);
 		if (driver.Current == Drivers.Computer)
 			StartCoroutine(ComputerHighlightTarget());
 	}
-
-	public override void Exit()
+	
+	public override void Exit ()
 	{
-		base.Exit();
+		base.Exit ();
 		board.DeSelectTiles(tiles);
 		statPanelController.HidePrimary();
 		statPanelController.HideSecondary();
 	}
-
-	protected override void OnMove(object sender, InfoEventArgs<Point> e)
+	
+	protected override void OnMove (object sender, InfoEventArgs<Point> e)
 	{
 		if (ar.directionOriented)
 		{
@@ -39,8 +39,8 @@ public class AbilityTargetState : BattleState
 			RefreshSecondaryStatPanel(pos);
 		}
 	}
-
-	protected override void OnFire(object sender, InfoEventArgs<int> e)
+	
+	protected override void OnFire (object sender, InfoEventArgs<int> e)
 	{
 		if (e.info == 0)
 		{
@@ -52,8 +52,8 @@ public class AbilityTargetState : BattleState
 			owner.ChangeState<CategorySelectionState>();
 		}
 	}
-
-	void ChangeDirection(Point p)
+	
+	void ChangeDirection (Point p)
 	{
 		Directions dir = p.GetDirection();
 		if (turn.actor.dir != dir)
@@ -61,17 +61,17 @@ public class AbilityTargetState : BattleState
 			board.DeSelectTiles(tiles);
 			turn.actor.dir = dir;
 			turn.actor.Match();
-			SelectTiles();
+			SelectTiles ();
 		}
 	}
-
-	void SelectTiles()
+	
+	void SelectTiles ()
 	{
 		tiles = ar.GetTilesInRange(board);
 		board.SelectTiles(tiles);
 	}
 
-	IEnumerator ComputerHighlightTarget()
+	IEnumerator ComputerHighlightTarget ()
 	{
 		if (ar.directionOriented)
 		{

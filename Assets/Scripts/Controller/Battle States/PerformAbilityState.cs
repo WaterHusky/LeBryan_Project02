@@ -1,23 +1,23 @@
+﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class PerformAbilityState : BattleState
+public class PerformAbilityState : BattleState 
 {
-	public override void Enter()
+	public override void Enter ()
 	{
-		base.Enter();
+		base.Enter ();
 		turn.hasUnitActed = true;
 		if (turn.hasUnitMoved)
 			turn.lockMove = true;
 		StartCoroutine(Animate());
 	}
-
-	IEnumerator Animate()
+	
+	IEnumerator Animate ()
 	{
 		// TODO play animations, etc
 		yield return null;
 		ApplyAbility();
+		
 		if (IsBattleOver())
 			owner.ChangeState<CutSceneState>();
 		else if (!UnitHasControl())
@@ -27,13 +27,13 @@ public class PerformAbilityState : BattleState
 		else
 			owner.ChangeState<CommandSelectionState>();
 	}
-
-	void ApplyAbility()
+	
+	void ApplyAbility ()
 	{
 		turn.ability.Perform(turn.targets);
 	}
-
-	bool UnitHasControl()
+	
+	bool UnitHasControl ()
 	{
 		return turn.actor.GetComponentInChildren<KnockOutStatusEffect>() == null;
 	}

@@ -1,25 +1,25 @@
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class ActionSelectionState : BaseAbilityMenuState
+public class ActionSelectionState : BaseAbilityMenuState 
 {
 	public static int category;
 	AbilityCatalog catalog;
 
-	public override void Enter()
+	public override void Enter ()
 	{
-		base.Enter();
+		base.Enter ();
 		statPanelController.ShowPrimary(turn.actor.gameObject);
 	}
-
-	public override void Exit()
+	
+	public override void Exit ()
 	{
-		base.Exit();
+		base.Exit ();
 		statPanelController.HidePrimary();
 	}
 
-	protected override void LoadMenu()
+	protected override void LoadMenu ()
 	{
 		catalog = turn.actor.GetComponentInChildren<AbilityCatalog>();
 		GameObject container = catalog.GetCategory(category);
@@ -48,13 +48,13 @@ public class ActionSelectionState : BaseAbilityMenuState
 			abilityMenuPanelController.SetLocked(i, locks[i]);
 	}
 
-	protected override void Confirm()
+	protected override void Confirm ()
 	{
 		turn.ability = catalog.GetAbility(category, abilityMenuPanelController.selection);
 		owner.ChangeState<AbilityTargetState>();
 	}
 
-	protected override void Cancel()
+	protected override void Cancel ()
 	{
 		owner.ChangeState<CategorySelectionState>();
 	}

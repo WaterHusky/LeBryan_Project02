@@ -1,11 +1,10 @@
+﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class TeleportMovement : Movement
+public class TeleportMovement : Movement 
 {
-	public override IEnumerator Traverse(Tile tile)
-	{
+	public override IEnumerator Traverse (Tile tile)
+	{	
 		unit.Place(tile);
 
 		Tweener spin = jumper.RotateToLocal(new Vector3(0, 360, 0), 0.5f, EasingEquations.EaseInOutQuad);

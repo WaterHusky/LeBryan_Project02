@@ -1,11 +1,10 @@
+﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public enum Directions 
+public enum Directions
 {
-    North,
-    East,
-    South,
-    West
+	North,
+	East,
+	South,
+	West
 }

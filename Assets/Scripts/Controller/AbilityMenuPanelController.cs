@@ -1,9 +1,9 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 
-public class AbilityMenuPanelController : MonoBehaviour
+public class AbilityMenuPanelController : MonoBehaviour 
 {
 	#region Constants
 	const string ShowKey = "Show";
@@ -22,12 +22,12 @@ public class AbilityMenuPanelController : MonoBehaviour
 	#endregion
 
 	#region MonoBehaviour
-	void Awake()
+	void Awake ()
 	{
 		GameObjectPoolController.AddEntry(EntryPoolKey, entryPrefab, MenuCount, int.MaxValue);
 	}
 
-	void Start()
+	void Start ()
 	{
 		panel.SetPosition(HideKey, false);
 		canvas.SetActive(false);
@@ -35,10 +35,10 @@ public class AbilityMenuPanelController : MonoBehaviour
 	#endregion
 
 	#region Public
-	public void Show(string title, List<string> options)
+	public void Show (string title, List<string> options)
 	{
 		canvas.SetActive(true);
-		Clear();
+		Clear ();
 		titleLabel.text = title;
 		for (int i = 0; i < options.Count; ++i)
 		{
@@ -50,10 +50,10 @@ public class AbilityMenuPanelController : MonoBehaviour
 		TogglePos(ShowKey);
 	}
 
-	public void Hide()
+	public void Hide ()
 	{
 		Tweener t = TogglePos(HideKey);
-		t.completedEvent += delegate (object sender, System.EventArgs e)
+		t.completedEvent += delegate(object sender, System.EventArgs e)
 		{
 			if (panel.CurrentPosition == panel[HideKey])
 			{
@@ -63,7 +63,7 @@ public class AbilityMenuPanelController : MonoBehaviour
 		};
 	}
 
-	public void SetLocked(int index, bool value)
+	public void SetLocked (int index, bool value)
 	{
 		if (index < 0 || index >= menuEntries.Count)
 			return;
@@ -73,7 +73,7 @@ public class AbilityMenuPanelController : MonoBehaviour
 			Next();
 	}
 
-	public void Next()
+	public void Next ()
 	{
 		for (int i = selection + 1; i < selection + menuEntries.Count; ++i)
 		{
@@ -83,7 +83,7 @@ public class AbilityMenuPanelController : MonoBehaviour
 		}
 	}
 
-	public void Previous()
+	public void Previous ()
 	{
 		for (int i = selection - 1 + menuEntries.Count; i > selection; --i)
 		{
@@ -95,7 +95,7 @@ public class AbilityMenuPanelController : MonoBehaviour
 	#endregion
 
 	#region Private
-	AbilityMenuEntry Dequeue()
+	AbilityMenuEntry Dequeue ()
 	{
 		Poolable p = GameObjectPoolController.Dequeue(EntryPoolKey);
 		AbilityMenuEntry entry = p.GetComponent<AbilityMenuEntry>();
@@ -106,38 +106,38 @@ public class AbilityMenuPanelController : MonoBehaviour
 		return entry;
 	}
 
-	void Enqueue(AbilityMenuEntry entry)
+	void Enqueue (AbilityMenuEntry entry)
 	{
 		Poolable p = entry.GetComponent<Poolable>();
 		GameObjectPoolController.Enqueue(p);
 	}
 
-	void Clear()
+	void Clear ()
 	{
 		for (int i = menuEntries.Count - 1; i >= 0; --i)
 			Enqueue(menuEntries[i]);
 		menuEntries.Clear();
 	}
 
-	bool SetSelection(int value)
+	bool SetSelection (int value)
 	{
 		if (menuEntries[value].IsLocked)
 			return false;
-
+		
 		// Deselect the previously selected entry
 		if (selection >= 0 && selection < menuEntries.Count)
 			menuEntries[selection].IsSelected = false;
-
+		
 		selection = value;
-
+		
 		// Select the new entry
 		if (selection >= 0 && selection < menuEntries.Count)
 			menuEntries[selection].IsSelected = true;
-
+		
 		return true;
 	}
 
-	Tweener TogglePos(string pos)
+	Tweener TogglePos (string pos)
 	{
 		Tweener t = panel.SetPosition(pos, true);
 		t.duration = 0.5f;
@@ -145,6 +145,4 @@ public class AbilityMenuPanelController : MonoBehaviour
 		return t;
 	}
 	#endregion
-
-
 }

@@ -1,6 +1,6 @@
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class Turn 
 {
@@ -14,7 +14,7 @@ public class Turn
 	Tile startTile;
 	Directions startDir;
 
-	public void Change(Unit current)
+	public void Change (Unit current)
 	{
 		actor = current;
 		hasUnitMoved = false;
@@ -25,7 +25,7 @@ public class Turn
 		plan = null;
 	}
 
-	public void UndoMove()
+	public void UndoMove ()
 	{
 		hasUnitMoved = false;
 		actor.Place(startTile);

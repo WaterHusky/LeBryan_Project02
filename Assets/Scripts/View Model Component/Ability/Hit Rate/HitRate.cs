@@ -1,8 +1,7 @@
+﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public abstract class HitRate : MonoBehaviour
+public abstract class HitRate : MonoBehaviour 
 {
 	#region Notifications
 	/// <summary>
@@ -24,12 +23,12 @@ public abstract class HitRate : MonoBehaviour
 	#endregion
 
 	#region Fields
-	public virtual bool IsAngleBased { get { return true; } }
+	public virtual bool IsAngleBased { get { return true; }}
 	protected Unit attacker;
 	#endregion
 
 	#region MonoBehaviour
-	protected virtual void Start()
+	protected virtual void Start ()
 	{
 		attacker = GetComponentInParent<Unit>();
 	}
@@ -40,9 +39,9 @@ public abstract class HitRate : MonoBehaviour
 	/// Returns a value in the range of 0 t0 100 as a percent chance of
 	/// an ability succeeding to hit
 	/// </summary>
-	public abstract int Calculate(Tile target);
-
-	public virtual bool RollForHit(Tile target)
+	public abstract int Calculate (Tile target);
+	
+	public virtual bool RollForHit (Tile target)
 	{
 		int roll = UnityEngine.Random.Range(0, 101);
 		int chance = Calculate(target);
@@ -51,28 +50,28 @@ public abstract class HitRate : MonoBehaviour
 	#endregion
 
 	#region Protected
-	protected virtual bool AutomaticHit(Unit target)
+	protected virtual bool AutomaticHit (Unit target)
 	{
 		MatchException exc = new MatchException(attacker, target);
 		this.PostNotification(AutomaticHitCheckNotification, exc);
 		return exc.toggle;
 	}
 
-	protected virtual bool AutomaticMiss(Unit target)
+	protected virtual bool AutomaticMiss (Unit target)
 	{
 		MatchException exc = new MatchException(attacker, target);
 		this.PostNotification(AutomaticMissCheckNotification, exc);
 		return exc.toggle;
 	}
 
-	protected virtual int AdjustForStatusEffects(Unit target, int rate)
+	protected virtual int AdjustForStatusEffects (Unit target, int rate)
 	{
 		Info<Unit, Unit, int> args = new Info<Unit, Unit, int>(attacker, target, rate);
 		this.PostNotification(StatusCheckNotification, args);
 		return args.arg2;
 	}
 
-	protected virtual int Final(int evade)
+	protected virtual int Final (int evade)
 	{
 		return 100 - evade;
 	}

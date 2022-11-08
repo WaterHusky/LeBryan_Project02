@@ -11,7 +11,7 @@ public struct Point : IEquatable<Point>
 	#endregion
 
 	#region Constructors
-	public Point(int x, int y)
+	public Point (int x, int y)
 	{
 		this.x = x;
 		this.y = y;
@@ -23,17 +23,17 @@ public struct Point : IEquatable<Point>
 	{
 		return new Point(a.x + b.x, a.y + b.y);
 	}
-
-	public static Point operator -(Point p1, Point p2)
+	
+	public static Point operator -(Point p1, Point p2) 
 	{
 		return new Point(p1.x - p2.x, p1.y - p2.y);
 	}
-
+	
 	public static bool operator ==(Point a, Point b)
 	{
 		return a.x == b.x && a.y == b.y;
 	}
-
+	
 	public static bool operator !=(Point a, Point b)
 	{
 		return !(a == b);
@@ -46,7 +46,7 @@ public struct Point : IEquatable<Point>
 	#endregion
 
 	#region Object Overloads
-	public override bool Equals(object obj)
+	public override bool Equals (object obj)
 	{
 		if (obj is Point)
 		{
@@ -55,20 +55,20 @@ public struct Point : IEquatable<Point>
 		}
 		return false;
 	}
-
-	public bool Equals(Point p)
+	
+	public bool Equals (Point p)
 	{
 		return x == p.x && y == p.y;
 	}
-
-	public override int GetHashCode()
+	
+	public override int GetHashCode ()
 	{
 		return x ^ y;
 	}
 
-	public override string ToString()
+	public override string ToString ()
 	{
-		return string.Format("({0},{1})", x, y);
+		return string.Format ("({0},{1})", x, y);
 	}
 	#endregion
 }

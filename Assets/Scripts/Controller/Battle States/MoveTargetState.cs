@@ -1,14 +1,14 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class MoveTargetState : BattleState
 {
 	List<Tile> tiles;
-
-	public override void Enter()
+	
+	public override void Enter ()
 	{
-		base.Enter();
+		base.Enter ();
 		Movement mover = turn.actor.GetComponent<Movement>();
 		tiles = mover.GetTilesInRange(board);
 		board.SelectTiles(tiles);
@@ -16,22 +16,22 @@ public class MoveTargetState : BattleState
 		if (driver.Current == Drivers.Computer)
 			StartCoroutine(ComputerHighlightMoveTarget());
 	}
-
-	public override void Exit()
+	
+	public override void Exit ()
 	{
-		base.Exit();
+		base.Exit ();
 		board.DeSelectTiles(tiles);
 		tiles = null;
 		statPanelController.HidePrimary();
 	}
-
-	protected override void OnMove(object sender, InfoEventArgs<Point> e)
+	
+	protected override void OnMove (object sender, InfoEventArgs<Point> e)
 	{
 		SelectTile(e.info + pos);
 		RefreshPrimaryStatPanel(pos);
 	}
-
-	protected override void OnFire(object sender, InfoEventArgs<int> e)
+	
+	protected override void OnFire (object sender, InfoEventArgs<int> e)
 	{
 		if (e.info == 0)
 		{
@@ -44,7 +44,7 @@ public class MoveTargetState : BattleState
 		}
 	}
 
-	IEnumerator ComputerHighlightMoveTarget()
+	IEnumerator ComputerHighlightMoveTarget ()
 	{
 		Point cursorPos = pos;
 		while (cursorPos != turn.plan.moveLocation)

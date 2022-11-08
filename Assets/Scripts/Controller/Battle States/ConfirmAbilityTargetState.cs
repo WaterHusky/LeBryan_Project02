@@ -1,6 +1,6 @@
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class ConfirmAbilityTargetState : BattleState
 {
@@ -8,9 +8,9 @@ public class ConfirmAbilityTargetState : BattleState
 	AbilityArea aa;
 	int index = 0;
 
-	public override void Enter()
+	public override void Enter ()
 	{
-		base.Enter();
+		base.Enter ();
 		aa = turn.ability.GetComponent<AbilityArea>();
 		tiles = aa.GetTilesInArea(board, pos);
 		board.SelectTiles(tiles);
@@ -26,16 +26,16 @@ public class ConfirmAbilityTargetState : BattleState
 			StartCoroutine(ComputerDisplayAbilitySelection());
 	}
 
-	public override void Exit()
+	public override void Exit ()
 	{
-		base.Exit();
+		base.Exit ();
 		board.DeSelectTiles(tiles);
 		statPanelController.HidePrimary();
 		statPanelController.HideSecondary();
 		hitSuccessIndicator.Hide();
 	}
 
-	protected override void OnMove(object sender, InfoEventArgs<Point> e)
+	protected override void OnMove (object sender, InfoEventArgs<Point> e)
 	{
 		if (e.info.y > 0 || e.info.x > 0)
 			SetTarget(index + 1);
@@ -43,7 +43,7 @@ public class ConfirmAbilityTargetState : BattleState
 			SetTarget(index - 1);
 	}
 
-	protected override void OnFire(object sender, InfoEventArgs<int> e)
+	protected override void OnFire (object sender, InfoEventArgs<int> e)
 	{
 		if (e.info == 0)
 		{
@@ -56,7 +56,7 @@ public class ConfirmAbilityTargetState : BattleState
 			owner.ChangeState<AbilityTargetState>();
 	}
 
-	void FindTargets()
+	void FindTargets ()
 	{
 		turn.targets = new List<Tile>();
 		for (int i = 0; i < tiles.Count; ++i)
@@ -64,7 +64,7 @@ public class ConfirmAbilityTargetState : BattleState
 				turn.targets.Add(tiles[i]);
 	}
 
-	void SetTarget(int target)
+	void SetTarget (int target)
 	{
 		index = target;
 		if (index < 0)
@@ -75,11 +75,11 @@ public class ConfirmAbilityTargetState : BattleState
 		if (turn.targets.Count > 0)
 		{
 			RefreshSecondaryStatPanel(turn.targets[index].pos);
-			UpdateHitSuccessIndicator();
+			UpdateHitSuccessIndicator ();
 		}
 	}
 
-	void UpdateHitSuccessIndicator()
+	void UpdateHitSuccessIndicator ()
 	{
 		int chance = 0;
 		int amount = 0;
@@ -103,10 +103,10 @@ public class ConfirmAbilityTargetState : BattleState
 		hitSuccessIndicator.SetStats(chance, amount);
 	}
 
-	IEnumerator ComputerDisplayAbilitySelection()
+	IEnumerator ComputerDisplayAbilitySelection ()
 	{
 		owner.battleMessageController.Display(turn.ability.name);
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds (2f);
 		owner.ChangeState<PerformAbilityState>();
 	}
 }

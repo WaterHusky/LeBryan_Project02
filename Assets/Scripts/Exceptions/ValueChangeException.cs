@@ -27,15 +27,16 @@ public class ValueChangeException : BaseException
 		modifiers.Add(m);
 	}
 
-	public float GetModifiedValue()
+	public float GetModifiedValue ()
 	{
 		if (modifiers == null)
 			return toValue;
+
 		float value = toValue;
 		modifiers.Sort(Compare);
 		for (int i = 0; i < modifiers.Count; ++i)
 			value = modifiers[i].Modify(fromValue, value);
-
+		
 		return value;
 	}
 	#endregion

@@ -9,44 +9,44 @@ public class Health : MonoBehaviour
 		get { return stats[StatTypes.HP]; }
 		set { stats[StatTypes.HP] = value; }
 	}
-
+	
 	public int MHP
 	{
 		get { return stats[StatTypes.MHP]; }
 		set { stats[StatTypes.MHP] = value; }
 	}
-
+	
 	public int MinHP = 0;
 	Stats stats;
 	#endregion
-
+	
 	#region MonoBehaviour
-	void Awake()
+	void Awake ()
 	{
 		stats = GetComponent<Stats>();
 	}
-
-	void OnEnable()
+	
+	void OnEnable ()
 	{
 		this.AddObserver(OnHPWillChange, Stats.WillChangeNotification(StatTypes.HP), stats);
 		this.AddObserver(OnMHPDidChange, Stats.DidChangeNotification(StatTypes.MHP), stats);
 	}
-
-	void OnDisable()
+	
+	void OnDisable ()
 	{
 		this.RemoveObserver(OnHPWillChange, Stats.WillChangeNotification(StatTypes.HP), stats);
 		this.RemoveObserver(OnMHPDidChange, Stats.DidChangeNotification(StatTypes.MHP), stats);
 	}
 	#endregion
-
+	
 	#region Event Handlers
-	void OnHPWillChange(object sender, object args)
+	void OnHPWillChange (object sender, object args)
 	{
 		ValueChangeException vce = args as ValueChangeException;
 		vce.AddModifier(new ClampValueModifier(int.MaxValue, MinHP, stats[StatTypes.MHP]));
 	}
-
-	void OnMHPDidChange(object sender, object args)
+	
+	void OnMHPDidChange (object sender, object args)
 	{
 		int oldMHP = (int)args;
 		if (MHP > oldMHP)

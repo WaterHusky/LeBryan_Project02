@@ -6,20 +6,20 @@ public class ComputerPlayer : MonoBehaviour
 {
 	#region Fields
 	BattleController bc;
-	Unit actor { get { return bc.turn.actor; } }
-	Alliance alliance { get { return actor.GetComponent<Alliance>(); } }
+	Unit actor { get { return bc.turn.actor; }}
+	Alliance alliance { get { return actor.GetComponent<Alliance>(); }}
 	Unit nearestFoe;
 	#endregion
-
+	
 	#region MonoBehaviour
-	void Awake()
+	void Awake ()
 	{
 		bc = GetComponent<BattleController>();
 	}
 	#endregion
-
+	
 	#region Public
-	public PlanOfAttack Evaluate()
+	public PlanOfAttack Evaluate ()
 	{
 		PlanOfAttack poa = new PlanOfAttack();
 		AttackPattern pattern = actor.GetComponentInChildren<AttackPattern>();
@@ -27,7 +27,7 @@ public class ComputerPlayer : MonoBehaviour
 			pattern.Pick(poa);
 		else
 			DefaultAttackPattern(poa);
-
+		
 		if (IsPositionIndependent(poa))
 			PlanPositionIndependent(poa);
 		else if (IsDirectionIndependent(poa))
@@ -37,51 +37,51 @@ public class ComputerPlayer : MonoBehaviour
 
 		if (poa.ability == null)
 			MoveTowardOpponent(poa);
-
+		
 		return poa;
 	}
 	#endregion
-
+	
 	#region Private
-	void DefaultAttackPattern(PlanOfAttack poa)
+	void DefaultAttackPattern (PlanOfAttack poa)
 	{
 		// Just get the first "Attack" ability
 		poa.ability = actor.GetComponentInChildren<Ability>();
 		poa.target = Targets.Foe;
 	}
 
-	bool IsPositionIndependent(PlanOfAttack poa)
+	bool IsPositionIndependent (PlanOfAttack poa)
 	{
 		AbilityRange range = poa.ability.GetComponent<AbilityRange>();
 		return range.positionOriented == false;
 	}
-
-	bool IsDirectionIndependent(PlanOfAttack poa)
+	
+	bool IsDirectionIndependent (PlanOfAttack poa)
 	{
 		AbilityRange range = poa.ability.GetComponent<AbilityRange>();
 		return !range.directionOriented;
 	}
-
-	void PlanPositionIndependent(PlanOfAttack poa)
+	
+	void PlanPositionIndependent (PlanOfAttack poa)
 	{
 		List<Tile> moveOptions = GetMoveOptions();
 		Tile tile = moveOptions[Random.Range(0, moveOptions.Count)];
 		poa.moveLocation = poa.fireLocation = tile.pos;
 	}
-
-	void PlanDirectionIndependent(PlanOfAttack poa)
+	
+	void PlanDirectionIndependent (PlanOfAttack poa)
 	{
 		Tile startTile = actor.tile;
 		Dictionary<Tile, AttackOption> map = new Dictionary<Tile, AttackOption>();
 		AbilityRange ar = poa.ability.GetComponent<AbilityRange>();
 		List<Tile> moveOptions = GetMoveOptions();
-
+		
 		for (int i = 0; i < moveOptions.Count; ++i)
 		{
 			Tile moveTile = moveOptions[i];
-			actor.Place(moveTile);
+			actor.Place( moveTile );
 			List<Tile> fireOptions = ar.GetTilesInRange(bc.board);
-
+			
 			for (int j = 0; j < fireOptions.Count; ++j)
 			{
 				Tile fireTile = fireOptions[j];
@@ -102,24 +102,24 @@ public class ComputerPlayer : MonoBehaviour
 				ao.AddMoveTarget(moveTile);
 			}
 		}
-
+		
 		actor.Place(startTile);
 		List<AttackOption> list = new List<AttackOption>(map.Values);
 		PickBestOption(poa, list);
 	}
-
-	void PlanDirectionDependent(PlanOfAttack poa)
+	
+	void PlanDirectionDependent (PlanOfAttack poa)
 	{
 		Tile startTile = actor.tile;
 		Directions startDirection = actor.dir;
 		List<AttackOption> list = new List<AttackOption>();
 		List<Tile> moveOptions = GetMoveOptions();
-
+		
 		for (int i = 0; i < moveOptions.Count; ++i)
 		{
 			Tile moveTile = moveOptions[i];
-			actor.Place(moveTile);
-
+			actor.Place( moveTile );
+			
 			for (int j = 0; j < 4; ++j)
 			{
 				actor.dir = (Directions)j;
@@ -131,13 +131,13 @@ public class ComputerPlayer : MonoBehaviour
 				list.Add(ao);
 			}
 		}
-
+		
 		actor.Place(startTile);
 		actor.dir = startDirection;
 		PickBestOption(poa, list);
 	}
 
-	bool IsAbilityTargetMatch(PlanOfAttack poa, Tile tile)
+	bool IsAbilityTargetMatch (PlanOfAttack poa, Tile tile)
 	{
 		bool isMatch = false;
 		if (poa.target == Targets.Tile)
@@ -151,13 +151,13 @@ public class ComputerPlayer : MonoBehaviour
 
 		return isMatch;
 	}
-
-	List<Tile> GetMoveOptions()
+	
+	List<Tile> GetMoveOptions ()
 	{
 		return actor.GetComponent<Movement>().GetTilesInRange(bc.board);
 	}
-
-	void RateFireLocation(PlanOfAttack poa, AttackOption option)
+	
+	void RateFireLocation (PlanOfAttack poa, AttackOption option)
 	{
 		AbilityArea area = poa.ability.GetComponent<AbilityArea>();
 		List<Tile> tiles = area.GetTilesInArea(bc.board, option.target.pos);
@@ -169,13 +169,13 @@ public class ComputerPlayer : MonoBehaviour
 			Tile tile = tiles[i];
 			if (actor.tile == tiles[i] || !poa.ability.IsTarget(tile))
 				continue;
-
+			
 			bool isMatch = IsAbilityTargetMatch(poa, tile);
 			option.AddMark(tile, isMatch);
 		}
 	}
-
-	void PickBestOption(PlanOfAttack poa, List<AttackOption> list)
+	
+	void PickBestOption (PlanOfAttack poa, List<AttackOption> list)
 	{
 		int bestScore = 1;
 		List<AttackOption> bestOptions = new List<AttackOption>();
@@ -218,17 +218,17 @@ public class ComputerPlayer : MonoBehaviour
 				finalPicks.Add(option);
 			}
 		}
-
-		AttackOption choice = finalPicks[UnityEngine.Random.Range(0, finalPicks.Count)];
+		
+		AttackOption choice = finalPicks[ UnityEngine.Random.Range(0, finalPicks.Count)  ];
 		poa.fireLocation = choice.target.pos;
 		poa.attackDirection = choice.direction;
 		poa.moveLocation = choice.bestMoveTile.pos;
 	}
 
-	void FindNearestFoe()
+	void FindNearestFoe ()
 	{
 		nearestFoe = null;
-		bc.board.Search(actor.tile, delegate (Tile arg1, Tile arg2) {
+		bc.board.Search(actor.tile, delegate(Tile arg1, Tile arg2) {
 			if (nearestFoe == null && arg2.content != null)
 			{
 				Alliance other = arg2.content.GetComponentInChildren<Alliance>();
@@ -247,7 +247,7 @@ public class ComputerPlayer : MonoBehaviour
 		});
 	}
 
-	void MoveTowardOpponent(PlanOfAttack poa)
+	void MoveTowardOpponent (PlanOfAttack poa)
 	{
 		List<Tile> moveOptions = GetMoveOptions();
 		FindNearestFoe();
@@ -268,7 +268,7 @@ public class ComputerPlayer : MonoBehaviour
 		poa.moveLocation = actor.tile.pos;
 	}
 
-	public Directions DetermineEndFacingDirection()
+	public Directions DetermineEndFacingDirection ()
 	{
 		Directions dir = (Directions)UnityEngine.Random.Range(0, 4);
 		FindNearestFoe();

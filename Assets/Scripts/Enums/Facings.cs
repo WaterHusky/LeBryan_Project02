@@ -1,10 +1,9 @@
+﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public enum Facings 
+public enum Facings
 {
-    Front,
-    Side,
-    Back
+	Front,
+	Side,
+	Back
 }
