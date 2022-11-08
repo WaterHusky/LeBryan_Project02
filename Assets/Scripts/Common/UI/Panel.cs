@@ -9,7 +9,7 @@ using UnityEngine;
 public class Panel : MonoBehaviour
 {
 	#region Sub Types
-	[Serializable]
+	[Serializable] 
 	public class Position
 	{
 		public string name;
@@ -36,7 +36,7 @@ public class Panel : MonoBehaviour
 	#endregion
 
 	#region Fields / Properties
-	[SerializeField] List<Position> positionList;
+	[SerializeField] [NonReorderable] List<Position> positionList;
 	Dictionary<string, Position> positionMap;
 	LayoutAnchor anchor;
 

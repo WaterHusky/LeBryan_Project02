@@ -16,40 +16,45 @@ public class InitBattleState : BattleState
         owner.round = owner.gameObject.AddComponent<TurnOrderController>().Round();
         SelectTile(p);
         SpawnTestUnits();
+        AddVictoryCondition();
         yield return null;
         owner.ChangeState<CutSceneState>();
     }
 
     void SpawnTestUnits()
     {
-        string[] jobs = new string[] { "Rogue", "Warrior", "Wizard" };
-        for (int i = 0; i < jobs.Length; ++i)
+        string[] recipes = new string[]
         {
-            GameObject instance = Instantiate(owner.heroPrefab) as GameObject;
-
-            Stats s = instance.AddComponent<Stats>();
-            s[StatTypes.LVL] = 1;
-
-            GameObject jobPrefab = Resources.Load<GameObject>("Jobs/" + jobs[i]);
-            GameObject jobInstance = Instantiate(jobPrefab) as GameObject;
-            jobInstance.transform.SetParent(instance.transform);
-
-            Job job = jobInstance.GetComponent<Job>();
-            job.Employ();
-            job.LoadDefaultStats();
-
-            Point p = new Point((int)levelData.tiles[i].x, (int)levelData.tiles[i].z);
-
+            "Alaois",
+            "Hania",
+            "Kamau",
+            "Joker",
+            "Skull",
+            "Panther"
+        };
+        List<Tile> locations = new List<Tile>(board.tiles.Values);
+        for (int i = 0; i < recipes.Length; ++i)
+        {
+            int level = UnityEngine.Random.Range(9, 12);
+            GameObject instance = UnitFactory.Create(recipes[i], level);
+            int random = UnityEngine.Random.Range(0, locations.Count);
+            Tile randomTile = locations[random];
+            locations.RemoveAt(random);
             Unit unit = instance.GetComponent<Unit>();
-            unit.Place(board.GetTile(p));
+            unit.Place(randomTile);
+            unit.dir = (Directions)UnityEngine.Random.Range(0, 4);
             unit.Match();
-
-            instance.AddComponent<WalkMovement>();
             units.Add(unit);
-                Rank rank = instance.AddComponent<Rank>();
-                rank.Init (10);
-            instance.AddComponent<Health>();
-            instance.AddComponent<Mana>();
         }
+        SelectTile(units[0].tile.pos);
+    }
+
+    void AddVictoryCondition()
+    {
+        DefeatTargetVictoryCondition vc = owner.gameObject.AddComponent<DefeatTargetVictoryCondition>();
+        Unit enemy = units[units.Count - 1];
+        vc.target = enemy;
+        Health health = enemy.GetComponent<Health>();
+        health.MinHP = 10;
     }
 }

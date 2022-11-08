@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FullTypeHitRate : HitRate
 {
+	public override bool IsAngleBased { get { return false; } }
 
 	public override int Calculate(Tile target)
 	{
