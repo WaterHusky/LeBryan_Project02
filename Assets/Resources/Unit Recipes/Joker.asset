@@ -18,3 +18,4 @@ MonoBehaviour:
   abilityCatalog: Enemy Rogue
   locomotion: 1
   alliance: 4
+  strategy: Rogue Attack Pattern
