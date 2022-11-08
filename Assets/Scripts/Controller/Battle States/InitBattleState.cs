@@ -46,8 +46,10 @@ public class InitBattleState : BattleState
 
             instance.AddComponent<WalkMovement>();
             units.Add(unit);
-            //    Rank rank = instance.AddComponent<Rank>();
-            //    rank.Init (10);
+                Rank rank = instance.AddComponent<Rank>();
+                rank.Init (10);
+            instance.AddComponent<Health>();
+            instance.AddComponent<Mana>();
         }
     }
 }

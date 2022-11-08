@@ -28,19 +28,23 @@ public static class JobParser
     for (int i = 1; i < readText.Length; ++i)
       PartsStartingStats(readText[i]);
   }
-  static void PartsStartingStats (string line)
-  {
-    string[] elements = line.Split(',');
-    GameObject obj = GetOrCreate(elements[0]);
-    Job job = obj.GetComponent<Job>();
-    for (int i = 1; i < Job.statOrder.Length + 1; ++i)
-      job.baseStats[i-1] = Convert.ToInt32(elements[i]);
-    StatModifierFeature move = GetFeature (obj, StatTypes.MOV);
-    move.amount = Convert.ToInt32(elements[8]);
-    StatModifierFeature jump = GetFeature (obj, StatTypes.JMP);
-    jump.amount = Convert.ToInt32(elements[9]);
-  }
-  static void ParseGrowthStats ()
+    static void PartsStartingStats(string line)
+    {
+        string[] elements = line.Split(',');
+        GameObject obj = GetOrCreate(elements[0]);
+        Job job = obj.GetComponent<Job>();
+        for (int i = 1; i < Job.statOrder.Length + 1; ++i)
+            job.baseStats[i - 1] = Convert.ToInt32(elements[i]);
+        StatModifierFeature evade = GetFeature(obj, StatTypes.EVD);
+        evade.amount = Convert.ToInt32(elements[8]);
+        StatModifierFeature res = GetFeature(obj, StatTypes.RES);
+        res.amount = Convert.ToInt32(elements[9]);
+        StatModifierFeature move = GetFeature(obj, StatTypes.MOV);
+        move.amount = Convert.ToInt32(elements[10]);
+        StatModifierFeature jump = GetFeature(obj, StatTypes.JMP);
+        jump.amount = Convert.ToInt32(elements[11]);
+    }
+    static void ParseGrowthStats ()
   {
     string readPath = string.Format("{0}/Settings/JobGrowthStats.csv", Application.dataPath);
     string[] readText = File.ReadAllLines(readPath);

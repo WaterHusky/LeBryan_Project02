@@ -1,23 +1,34 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 [System.Serializable]
-public struct Point
+public struct Point : IEquatable<Point>
 {
+	#region Fields
 	public int x;
 	public int y;
-	
-	public Point (int x, int y)
+	#endregion
+
+	#region Constructors
+	public Point(int x, int y)
 	{
 		this.x = x;
 		this.y = y;
 	}
-	
-	public override string ToString ()
+	#endregion
+
+	#region Operator Overloads
+	public static Point operator +(Point a, Point b)
 	{
-		return string.Format ("({0},{1})", x, y);
+		return new Point(a.x + b.x, a.y + b.y);
 	}
-	
+
+	public static Point operator -(Point p1, Point p2)
+	{
+		return new Point(p1.x - p2.x, p1.y - p2.y);
+	}
+
 	public static bool operator ==(Point a, Point b)
 	{
 		return a.x == b.x && a.y == b.y;
@@ -28,17 +39,14 @@ public struct Point
 		return !(a == b);
 	}
 
-	public static Point operator +(Point a, Point b)
+	public static implicit operator Vector2(Point p)
 	{
-		return new Point(a.x + b.x, a.y + b.y);
+		return new Vector2(p.x, p.y);
 	}
+	#endregion
 
-	public static Point operator -(Point p1, Point p2) 
-	{
-		return new Point(p1.x - p2.x, p1.y - p2.y);
-	}
-	
-	public override bool Equals (object obj)
+	#region Object Overloads
+	public override bool Equals(object obj)
 	{
 		if (obj is Point)
 		{
@@ -48,13 +56,19 @@ public struct Point
 		return false;
 	}
 
-	public bool Equals (Point p)
+	public bool Equals(Point p)
 	{
 		return x == p.x && y == p.y;
 	}
 
-	public override int GetHashCode ()
+	public override int GetHashCode()
 	{
 		return x ^ y;
 	}
+
+	public override string ToString()
+	{
+		return string.Format("({0},{1})", x, y);
+	}
+	#endregion
 }
