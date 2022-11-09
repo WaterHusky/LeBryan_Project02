@@ -9,5 +9,6 @@ public class AbilityCatalogRecipe : ScriptableObject
 		public string name;
 		public string[] entries;
 	}
+	[NonReorderable]
 	public Category[] categories;
 }
