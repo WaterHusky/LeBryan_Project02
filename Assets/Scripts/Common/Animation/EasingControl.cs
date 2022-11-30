@@ -1,8 +1,32 @@
-﻿using UnityEngine;
+/*
+The MIT License (MIT)
+
+Copyright (c) 2016 Jonathan Parham
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+using UnityEngine;
 using System;
 using System.Collections;
 
-public class EasingControl : MonoBehaviour 
+public class EasingControl : MonoBehaviour
 {
 	#region Events
 	public event EventHandler updateEvent;
@@ -65,7 +89,7 @@ public class EasingControl : MonoBehaviour
 	{
 		Resume();
 	}
-	
+
 	void OnDisable ()
 	{
 		Pause();
@@ -77,24 +101,24 @@ public class EasingControl : MonoBehaviour
 	{
 		SetPlayState(PlayState.Playing);
 	}
-	
+
 	public void Reverse ()
 	{
 		SetPlayState(PlayState.Reversing);
 	}
-	
+
 	public void Pause ()
 	{
 		if (IsPlaying)
 			SetPlayState(PlayState.Paused);
 	}
-	
+
 	public void Resume ()
 	{
 		if (playState == PlayState.Paused)
 			SetPlayState(previousPlayState);
 	}
-	
+
 	public void Stop ()
 	{
 		SetPlayState(PlayState.Stopped);
@@ -103,7 +127,7 @@ public class EasingControl : MonoBehaviour
 		if (endBehaviour == EndBehaviour.Reset)
 			SeekToBeginning ();
 	}
-	
+
 	public void SeekToTime (float time)
 	{
 		currentTime = Mathf.Clamp01(time / duration);
@@ -112,12 +136,12 @@ public class EasingControl : MonoBehaviour
 		currentValue = newValue;
 		OnUpdate();
 	}
-	
+
 	public void SeekToBeginning ()
 	{
 		SeekToTime(0.0f);
 	}
-	
+
 	public void SeekToEnd ()
 	{
 		SeekToTime(duration);
@@ -157,7 +181,7 @@ public class EasingControl : MonoBehaviour
 		{
 			if (playState == target)
 				return;
-			
+
 			previousPlayState = playState;
 			playState = target;
 			OnStateChange();
@@ -207,24 +231,24 @@ public class EasingControl : MonoBehaviour
 			currentTime = Mathf.Clamp01( currentTime - (time / duration));
 			finished = Mathf.Approximately(currentTime, 0.0f);
 		}
-		
+
 		float frameValue = (endValue - startValue) * equation (0.0f, 1.0f, currentTime) + startValue;
 		currentOffset = frameValue - currentValue;
 		currentValue = frameValue;
 		OnUpdate();
-		
+
 		if (finished)
 		{
 			++loops;
-			if (loopCount < 0 || loopCount >= loops) 
+			if (loopCount < 0 || loopCount >= loops)
 			{
-				if (loopType == LoopType.Repeat) 
+				if (loopType == LoopType.Repeat)
 					SeekToBeginning();
 				else // PingPong
 					SetPlayState( playState == PlayState.Playing ? PlayState.Reversing : PlayState.Playing );
 
 				OnLoop();
-			} 
+			}
 			else
 			{
 				OnComplete();
