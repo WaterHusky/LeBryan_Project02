@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -14,16 +15,16 @@ MonoBehaviour:
   list:
   - messages:
     - Ramza, watch out! Don't rush them!
-    speaker: {fileID: 21300000, guid: 7e2a69b3c30514bb7b27323833be5df7, type: 3}
+    speaker: {fileID: 21300000, guid: cc5ecceb7ae342b42bd223192d10c01b, type: 3}
     anchor: 5
   - messages:
     - Don't patronize me, Delita! I'm also a Beoulve!!
-    speaker: {fileID: 21300000, guid: 96f9d8de3d7184c2096068f8c16e4ae6, type: 3}
+    speaker: {fileID: 21300000, guid: cc5ecceb7ae342b42bd223192d10c01b, type: 3}
     anchor: 3
   - messages:
     - Beoulve!? THE Beoulve family!?
     - So you must be cadets from the military academy! Snot-nosed little nobles!!
-    speaker: {fileID: 21300000, guid: 977bcb1cdd826448b8e3ca2878a9193c, type: 3}
+    speaker: {fileID: 21300000, guid: cc5ecceb7ae342b42bd223192d10c01b, type: 3}
     anchor: 3
   - messages:
     - Silence! Surrender or die in obscurity!!
