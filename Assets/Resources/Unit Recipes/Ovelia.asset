@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,9 +13,9 @@ MonoBehaviour:
   m_Name: Ovelia
   m_EditorClassIdentifier: 
   model: Hero
-  job: Rogue
+  job: Wizard
   attack: Common/Attack
-  abilityCatalog: DEBUG
-  movementType: 0
+  abilityCatalog: Heros
+  movementType: 2
   alliance: 2
   strategy: 

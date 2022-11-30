@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 282cffd2449ed4781979779a91081538, type: 3}
-  m_Name: Enemy Wizard
+  m_Script: {fileID: 11500000, guid: 7fb3dab6f710b4b1fb369ce655aee224, type: 3}
+  m_Name: OutroSceneLose
   m_EditorClassIdentifier: 
-  model: Monster
-  job: Wizard
-  attack: Common/Attack
-  abilityCatalog: 
-  movementType: 2
-  alliance: 4
-  strategy: Mage Attack Pattern
+  list:
+  - messages:
+    - Hahahhaha!
+    - You have lost how pathetic!
+    speaker: {fileID: 21300000, guid: 876f7cd2a042a734985ecd7e03afaf31, type: 3}
+    anchor: 2
