@@ -15,7 +15,7 @@ MonoBehaviour:
   model: Monster
   job: Warrior
   attack: Common/Attack
-  abilityCatalog: 
+  abilityCatalog: Enemy Warrior
   movementType: 0
   alliance: 4
   strategy: Warrior Attack Pattern

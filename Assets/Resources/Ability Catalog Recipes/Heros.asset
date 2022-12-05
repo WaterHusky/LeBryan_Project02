@@ -17,11 +17,9 @@ MonoBehaviour:
     entries:
     - Cure
     - Holy
-    - Rise
+    - Raise
   - name: Necromancy
     entries:
     - Vampiric Claw
     - Silence
     - Curse Chaos
-    - 
-    - 

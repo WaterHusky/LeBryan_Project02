@@ -7,7 +7,7 @@ namespace Tactical.Battle.BattleState {
 
 		public override void Enter () {
 			base.Enter();
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			SceneManager.LoadScene("MainMenu");
 		}
 
 	}

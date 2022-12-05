@@ -15,7 +15,7 @@ MonoBehaviour:
   model: Monster
   job: Rogue
   attack: Common/Attack
-  abilityCatalog: 
+  abilityCatalog: Enemy Rogue
   movementType: 1
   alliance: 4
   strategy: Rogue Attack Pattern

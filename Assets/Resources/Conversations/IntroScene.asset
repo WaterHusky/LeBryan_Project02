@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: IntroScene
   m_EditorClassIdentifier: 
   list:
-  - messages: []
-    speaker: {fileID: 21300000, guid: cc5ecceb7ae342b42bd223192d10c01b, type: 3}
+  - messages:
+    - You will not Escape!
+    speaker: {fileID: 21300000, guid: 876f7cd2a042a734985ecd7e03afaf31, type: 3}
     anchor: 2
-  - messages: []
-    speaker: {fileID: 21300000, guid: cc5ecceb7ae342b42bd223192d10c01b, type: 3}
+  - messages:
+    - Looks like we got no choice but to fight!
+    speaker: {fileID: 21300000, guid: 876f7cd2a042a734985ecd7e03afaf31, type: 3}
     anchor: 6
-  - messages: []
-    speaker: {fileID: 21300000, guid: cc5ecceb7ae342b42bd223192d10c01b, type: 3}
+  - messages:
+    - Get them!
+    speaker: {fileID: 21300000, guid: 876f7cd2a042a734985ecd7e03afaf31, type: 3}
     anchor: 2

@@ -283,4 +283,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: 0
-  ability: 
+  ability: Drain

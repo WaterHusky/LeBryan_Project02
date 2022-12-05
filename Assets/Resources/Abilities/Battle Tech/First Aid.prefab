@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 451080}
   - component: {fileID: 11445102}
   - component: {fileID: 11416674}
-  - component: {fileID: 11429022}
+  - component: {fileID: 1536253758851283839}
   m_Layer: 0
   m_Name: Heal
   m_TagString: Untagged
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ed4241c6c064a119a0f202ddcb1a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11429022
+--- !u!114 &1536253758851283839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,9 +169,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 137156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 128a96fae5c6e47b697dcd405f309f80, type: 3}
+  m_Script: {fileID: 11500000, guid: 886c203a1b17447139f5da58603c7edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffect: {fileID: 8300000, guid: f14301d8e2b1c0740ba57b01dfdbd80d, type: 3}
+  missEffect: {fileID: 8300000, guid: 437bda67fdd085b4198ba6d932cd9f6a, type: 3}
 --- !u!1 &182882
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +185,7 @@ GameObject:
   - component: {fileID: 402804}
   - component: {fileID: 11442396}
   - component: {fileID: 11484084}
-  - component: {fileID: 11429112}
+  - component: {fileID: 356289040792259396}
   m_Layer: 0
   m_Name: Esuna
   m_TagString: Untagged
@@ -230,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ed4241c6c064a119a0f202ddcb1a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11429112
+--- !u!114 &356289040792259396
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,6 +241,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 182882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 128a96fae5c6e47b697dcd405f309f80, type: 3}
+  m_Script: {fileID: 11500000, guid: 334cc1c7bc432d44c8a9ac2ef69ab15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
