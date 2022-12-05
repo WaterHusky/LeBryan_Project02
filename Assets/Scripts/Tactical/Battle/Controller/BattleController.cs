@@ -40,6 +40,7 @@ namespace Tactical.Battle.Controller {
 		public TimeController timeController;
 		[Header("- Audio -")]
 		public AudioSource audioSource;
+		public AudioSource AttackSFX;
 		public AudioClip tileSelectionClip;
 
 		private void Start () {

@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d85828dc3fe641e6ae7eedf6a4e16a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEffect: {fileID: 8887051734277300732}
   percent: 5
 --- !u!114 &8887051734277300732
 MonoBehaviour:

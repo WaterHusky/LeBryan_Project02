@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be566c4d1d517424e889c19c4e1865b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEffect: {fileID: 4028504982903571383}
   statusName: BlindStatusEffect
   duration: 10
 --- !u!114 &4028504982903571383

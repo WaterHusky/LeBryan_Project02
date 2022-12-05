@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 114000012994117934}
   - component: {fileID: 114000012098743914}
   - component: {fileID: 114000013623443694}
-  - component: {fileID: 6941370372835080466}
+  - component: {fileID: 8916271220694318055}
   m_Layer: 0
   m_Name: Damage
   m_TagString: Untagged
@@ -71,7 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9746a7c6333dc4087af9e03e9c81a173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6941370372835080466
+  soundEffect: {fileID: 8916271220694318055}
+--- !u!114 &8916271220694318055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

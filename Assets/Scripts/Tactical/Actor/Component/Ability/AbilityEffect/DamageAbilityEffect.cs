@@ -73,7 +73,6 @@ namespace Tactical.Actor.Component {
 			Stats s = defender.GetComponent<Stats>();
 			s[StatTypes.HP] += amount;
 			Debug.Log(string.Format("Dealing {0} damage", amount), this);
-
 			return amount;
 		}
 

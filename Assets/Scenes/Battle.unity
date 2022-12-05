@@ -378,6 +378,10 @@ PrefabInstance:
       propertyPath: m_EffectColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1278608137439865361, guid: 5baf5d35a91d34de1b614908424a094f, type: 3}
+      propertyPath: AttackSFX
+      value: 
+      objectReference: {fileID: 7751720793322368603}
     - target: {fileID: 1335516499529042826, guid: 5baf5d35a91d34de1b614908424a094f, type: 3}
       propertyPath: m_Type
       value: 0
@@ -544,15 +548,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5917603595419676734, guid: 5baf5d35a91d34de1b614908424a094f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5917603595419676734, guid: 5baf5d35a91d34de1b614908424a094f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5917603595419676734, guid: 5baf5d35a91d34de1b614908424a094f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5917603595419676734, guid: 5baf5d35a91d34de1b614908424a094f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -704,3 +708,8 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 19003a2eef87fc749a7259d56f94233c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5baf5d35a91d34de1b614908424a094f, type: 3}
+--- !u!82 &7751720793322368603 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4149657186301922852, guid: 5baf5d35a91d34de1b614908424a094f, type: 3}
+  m_PrefabInstance: {fileID: 7751720793322368602}
+  m_PrefabAsset: {fileID: 0}

@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be566c4d1d517424e889c19c4e1865b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEffect: {fileID: 7511161227443938523}
   statusName: SilenceStatusEffect
   duration: 2
 --- !u!114 &114000011020775600

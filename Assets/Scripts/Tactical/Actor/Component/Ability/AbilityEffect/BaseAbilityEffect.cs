@@ -14,6 +14,7 @@ namespace Tactical.Actor.Component {
 	/// when needed, and predicts the damage done.
 	/// </summary>
 	public abstract class BaseAbilityEffect : MonoBehaviour {
+		[SerializeField] public AbilitySoundEffect soundEffect;
 
 		/// <summary>
 		/// A notification sent before trying to get the Attack Stats.
@@ -88,10 +89,10 @@ namespace Tactical.Actor.Component {
 				//       back to the caster.
 				int damage = OnApply(target);
 				var info = new HitInfo(target, damage, audioSource);
-				this.PostNotification(HitNotification, info);
+				soundEffect.OnEffectHit(HitNotification, info);
 			} else {
 				var info = new MissInfo(target, audioSource);
-				this.PostNotification(MissNotification, info);
+				soundEffect.OnEffectMiss(MissNotification, info);
 			}
 		}
 

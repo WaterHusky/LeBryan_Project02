@@ -1,6 +1,7 @@
 using UnityEngine;
 using Tactical.Actor.Component;
 using Tactical.Actor.Model;
+using Tactical.Battle.Controller;
 
 namespace Tactical.Actor.Component {
 
@@ -11,15 +12,11 @@ namespace Tactical.Actor.Component {
 
 		[SerializeField] public AudioClip hitEffect;
 		[SerializeField] public AudioClip missEffect;
+		BattleController battleController;
 
-		private void OnEnable () {
-			this.AddObserver(OnEffectHit, BaseAbilityEffect.HitNotification);
-			this.AddObserver(OnEffectMiss, BaseAbilityEffect.MissNotification);
-		}
-
-		private void OnDisable () {
-			this.RemoveObserver(OnEffectHit, BaseAbilityEffect.HitNotification);
-			this.RemoveObserver(OnEffectMiss, BaseAbilityEffect.MissNotification);
+        void Awake()
+        {
+			battleController = FindObjectOfType<BattleController>();
 		}
 
 		/// <summary>
@@ -28,7 +25,7 @@ namespace Tactical.Actor.Component {
 		///
 		/// <param name="sender">The sender</param>
 		/// <param name="args">The arguments</param>
-		private void OnEffectHit (object sender, object args) {
+		public void OnEffectHit (object sender, object args) {
 			var info = args as HitInfo;
 			if (info != null && info.audioSource && hitEffect) {
 				Play(hitEffect, info.audioSource);
@@ -41,7 +38,7 @@ namespace Tactical.Actor.Component {
 		///
 		/// <param name="sender">The sender</param>
 		/// <param name="args">The arguments</param>
-		private void OnEffectMiss (object sender, object args) {
+		public void OnEffectMiss (object sender, object args) {
 			var info = args as HitInfo;
 			if (info != null && info.audioSource && missEffect) {
 				Play(missEffect, info.audioSource);
@@ -55,6 +52,7 @@ namespace Tactical.Actor.Component {
 		/// <param name="clip">The clip to play.</param>
 		/// <param name="audioSource">The audio source to play the clip from.</param>
 		private void Play (AudioClip clip, AudioSource audioSource) {
+			Debug.Log(clip.name);
 			audioSource.clip = clip;
 			audioSource.Play();
 		}
